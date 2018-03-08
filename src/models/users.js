@@ -2,10 +2,6 @@
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/course-rating');
-
-var db = mongoose.connection:
-
 var Schema = mongoose.Schema
 
 var UserSchema = new Schema({
@@ -33,4 +29,4 @@ var UserSchema = new Schema({
 
 var User = mongoose.model('User', UserSchema);
 
-module.exports = Users;
+module.exports = User;

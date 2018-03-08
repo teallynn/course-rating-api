@@ -1,12 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var Users = require(./users.js);
-var Reviews = require(./reviews.js);
-
-mongoose.connect('mongodb://localhost:27017/db');
-
-var db = mongoose.connection:
+var User = require('./users.js');
+var Review = require('./reviews.js');
 
 var Schema = mongoose.Schema
 
@@ -36,7 +32,7 @@ var CourseSchema = new Schema({
         required: true
       }
     }
-  ]
+  ],
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -47,4 +43,4 @@ var CourseSchema = new Schema({
 
 var Course = mongoose.model('Course', CourseSchema);
 
-module.exports = Courses;
+module.exports = Course;
