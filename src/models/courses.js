@@ -7,7 +7,6 @@ var Review = require('./reviews.js');
 var Schema = mongoose.Schema
 
 var CourseSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

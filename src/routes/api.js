@@ -51,7 +51,7 @@ router.get('/courses', function(req, res, next) {
 					if(err) return next(err);
           res.status(200);
 					res.json(courses);
-				});
+			  });
 });
 
 // GET /api/courses/:courseId 200 - Returns all Course properties and related user and review documents for the provided course ID
@@ -65,7 +65,7 @@ router.post('/courses', function(req, res, next) {
   course.save(function(err, course) {
     if(err) return next(err);
     res.status(201);
-    //res.json(course);
+    res.json(course);
   });
 });
 
@@ -73,7 +73,7 @@ router.post('/courses', function(req, res, next) {
 router.put('/courses/:courseId', function(req, res, next) {
   req.course.update(req.body, function(err, result) {
     if(err) return next(err);
-    //res.json(course);
+    //res.json(result);
   });
 });
 

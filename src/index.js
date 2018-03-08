@@ -32,8 +32,9 @@ app.use(morgan('dev'));
 // jsonParser parses the request body
 app.use(jsonParser());
 
-// morgan gives us http request logging
-app.use(morgan('dev'));
+// set views engine
+app.set('view engine', 'pug');
+app.set('views', __dirname + '/views');
 
 // setup our static route to serve files from the "public" folder
 app.use('/', express.static('public'));
