@@ -12,6 +12,8 @@
     "nodemon": "^1.9.1"
   },
   "dependencies": {
+    "basic-auth": "^2.0.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.13.4",
     "mongoose": "4.5.8",

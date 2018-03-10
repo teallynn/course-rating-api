@@ -12,7 +12,6 @@ var data = require('./data/data.json');
 
 mongoose.connect('mongodb://localhost:27017/apidb')
   .then(function() {
-      var db = mongoose.connection;
       console.log('db connection successful');
       seeder.seed(data).then(function(dbData) {
           console.log('db has been seeded')
@@ -23,6 +22,8 @@ mongoose.connect('mongodb://localhost:27017/apidb')
       console.error('connection error:', err);
   });
 
+var db = mongoose.connection;
+
 // set our port
 app.set('port', process.env.PORT || 5000);
 
@@ -32,13 +33,13 @@ app.use(morgan('dev'));
 // jsonParser parses the request body
 app.use(jsonParser());
 
-// set views engine
+/* set views engine
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 // setup our static route to serve files from the "public" folder
 app.use('/', express.static('public'));
-
+*/
 // include routes
 app.use('/api', routes);
 
@@ -52,8 +53,9 @@ app.use(function(req, res, next) {
 // Express's global error handler
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json({
     message: err.message,
+    status: err.status,
     error: {}
   });
 });
