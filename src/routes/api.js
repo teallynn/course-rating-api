@@ -19,18 +19,7 @@ router.param('courseId', function(req, res, next, id) {
     req.course = doc;
     return next();
   })
-  .populate({
-    path: 'user',
-    select: 'fullName'
-  })
-  .populate({
-    path: 'reviews',
-      populate: {
-        path: 'user',
-        model: 'User',
-        select: 'fullName'
-      }
-    });
+  .populate('user reviews');
 });
 
 // GET /api/users 200 - Returns the currently authenticated user
@@ -104,8 +93,8 @@ router.put('/courses/:courseId', mid.authenticateUser, function(req, res, next) 
   req.course.update(req.body, function(err, result) {
     if(err) return next(err);
     res.status(204);
-    res.json(result);
   });
+  res.json(req.course);
 });
 
 // POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID, sets the Location header to the related course, and returns no content
