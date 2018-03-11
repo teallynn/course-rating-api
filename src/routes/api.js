@@ -50,7 +50,7 @@ router.post('/users', function(req, res, next) {
               } else {
                 res.location('/');
                 res.status(201);
-                res.json(user);
+                //res.json(user);
               };
             });
           };
@@ -83,8 +83,8 @@ router.post('/courses', mid.authenticateUser, function(req, res, next) {
   course.save(function(err, course) {
     if(err) return next(err);
     res.status(201);
-    res.location('/courses');
-    res.json(course);
+    res.location('/courses').json();
+    //res.json(course);
   });
 });
 
@@ -92,9 +92,9 @@ router.post('/courses', mid.authenticateUser, function(req, res, next) {
 router.put('/courses/:courseId', mid.authenticateUser, function(req, res, next) {
   req.course.update(req.body, function(err, result) {
     if(err) return next(err);
-    res.status(204);
+    res.status(204).json();
   });
-  res.json(req.course);
+  //res.json(req.course);
 });
 
 // POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID, sets the Location header to the related course, and returns no content
@@ -103,8 +103,8 @@ router.post('/courses/:courseId/reviews', mid.authenticateUser,   function(req, 
   req.course.save(function(err, course) {
     if(err) return next(err);
     res.status(201);
-    res.location('/:courseId');
-    res.json(course);
+    res.location('/:courseId').json();
+    //res.json(course);
   });
 });
 
