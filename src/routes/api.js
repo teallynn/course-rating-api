@@ -11,7 +11,8 @@ router.param('courseId', function(req, res, next, id) {
   Course.findById(req.params.courseId, function(err, doc) {
     if(err) return next(err);
     if(!doc) {
-      err = new Error('Not Found');
+      err = new Error();
+      err.message = 'Not Found';
       err.status = 404;
       return next(err);
     }
@@ -33,7 +34,8 @@ router.post('/users', function(req, res, next) {
       .exec(function(error, user) {
         if(error) return next(error);
         if(user) {
-          var err = new Error('User email address already exists in database.');
+          var err = new Error();
+          err.message = 'User email address already exists in database.';
           err.status = 401;
           return next(err);
         } else {
