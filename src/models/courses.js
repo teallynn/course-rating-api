@@ -13,10 +13,12 @@ var CourseSchema = new Schema({
   },
   title: {
     type: String,
-    required: true },
+    required: [true, 'Title is required']
+  },
   description: {
     type: String,
-    required: true},
+    required: [true, 'Description is required']
+  },
   estimatedTime: String,
   materialsNeeded: String,
   steps: [
@@ -24,11 +26,11 @@ var CourseSchema = new Schema({
       stepNumber: Number,
       title: {
         type: String,
-        required: true
+        required: [true, 'Step title is required']
       },
       description: {
         type: String,
-        required: true
+        required: [true, 'Step description is required']
       }
     }
   ],

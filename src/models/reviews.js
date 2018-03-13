@@ -12,11 +12,11 @@ var ReviewSchema = new Schema({
   },
   postenOn: {
     type: Date,
-    default: Date.now()
+    default: Date.now
   },
   rating: {
     type: Number,
-    required: true,
+    required: [true, 'Rating is required.'],
     min: 1,
     max: 5
    },
